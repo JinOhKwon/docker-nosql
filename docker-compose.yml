@@ -4,26 +4,13 @@ services:
 
   mongo:
     image: mongo
-    build:
-      context: ./docker
-      dockerfile: DockerFile
-
-    # restart: always
-    restart: unless-stopped
-
     container_name: mongo-db
+    restart: always
     ports: 
       - '${MONGO_PORT}:27017'
 
-    volumes:
-      - type: "bind"
-        source: "./db"
-        target: "/data/db/joLife"
-      
-    volumes:
-      # - type: "bind"
-      #   source: "./script/init.js"
-      #   target: "/docker-entrypoint-initdb.d/init-mongo.js:ro"
+    volumes: 
+      - "./db:/data/db"
       - ./script/init.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
     env_file:
       - .env
