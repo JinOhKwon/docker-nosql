@@ -1,18 +1,37 @@
-version: "3.1"
+version: "3.8"
+
 services:
 
   mongo:
     image: mongo
-    restart: always
+    build:
+      context: ./docker
+      dockerfile: DockerFile
+
+    # restart: always
+    restart: unless-stopped
+
+    container_name: mongo-db
     ports: 
       - '${MONGO_PORT}:27017'
-    container_name: "docker-mongodb"
+
+    volumes:
+      - type: "bind"
+        source: "./db"
+        target: "/data/db/joLife"
+      
+    volumes:
+      # - type: "bind"
+      #   source: "./script/init.js"
+      #   target: "/docker-entrypoint-initdb.d/init-mongo.js:ro"
+      - ./script/init.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
     env_file:
       - .env
 
   mongo-express:
     image: mongo-express
     restart: always
+    container_name: mongo-express
     ports:
       - "${MONGO_EXPRESS_PORT}:8081"
     env_file:
