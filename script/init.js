@@ -1,27 +1,12 @@
 print("####################### Start ##############################");
 
 print(
-    "-------------------------- admin 생성 -----------------------------------"
-);
-
-db.createUser({
-  user: "admin",  
-  pwd: "qwert12345!@",  
-  roles: [          
-    {
-      role: "root", 
-      db: "admin"   
-    }
-  ]}
-)
-
-print(
     "-------------------------- PROD 생성 -----------------------------------"
 );
 
 db = db.getSiblingDB("prod_life");
 db.createUser({
-    user: "lifeProdUser",
+    user: "prodLifeUser",
     pwd: "qwert12345!@",
     roles: [{ role: "dbOwner", db: "prod_life" }],
 });
@@ -33,7 +18,7 @@ print(
 
 db = db.getSiblingDB("dev_life");
 db.createUser({
-    user: "lifeDevUser",
+    user: "devLifeUser",
     pwd: "qwert12345!@",
     roles: [{ role: "dbOwner", db: "dev_life" }],
 });
