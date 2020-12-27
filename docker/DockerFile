@@ -1,7 +1,5 @@
 # FROM mongo:4.4.2
 
-# ENV MONGO_INITDB_ROOT_USERNAME admin-user
-# ENV MONGO_INITDB_ROOT_PASSWORD admin-password
-# ENV MONGO_INITDB_DATABASE admin
-
+# apt-get update
+# apt-get install vim
 # COPY init.js /docker-entrypoint-initdb.d/

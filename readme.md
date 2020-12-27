@@ -26,4 +26,16 @@
     - docker-compose -f xxx.yml up -d : 
 
 # DB 접속
-    - mongo dev_life -u lifeDevUser -p : mongo [db] -u [userid] -p [패스워드]
+    ``` 
+    apt-get update : 라이브러이 업데이트
+    apt-get install vim : vim 설치
+
+    /etc/mongod.conf.orig : vim 으로 접속
+    security:
+        authorization : disabled 변경
+
+    ```
+    - mongo dev_life -u devLifeUser -p : mongo [db] -u [userid] -p [패스워드]
+
+# 주의사항
+    - password 설정시 끝에 @는 사용 x tpyeOrm에서 @ 구분자로 사용
