@@ -1,5 +1,5 @@
 
-# Docer 실행 명령어
+# Docker 실행 명령어
 
 1. 버전 확인
     - mongo -version
